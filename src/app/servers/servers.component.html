@@ -1,0 +1,10 @@
+<input type="text" class="form-input" (input)="onServerNameEntry($event)" />
+<p> Server Name : {{ serverName }} </p>
+<button class="btn-primary" [disabled]="!allowNewServer" (click)="onServerOnline()">Set Server Online</button>
+<p> Allowed to add Server <b> {{ allowNewServer }} </b></p>
+<app-server></app-server>
+<app-server></app-server>
+<p *ngIf="showMessage ; else noMessage" [ngClass]="{online: allowNewServer}"> Looks like all servers are <b> {{ serverStatus }} </b>, yes {{ getServerStatus() }}</p>
+<ng-template #noMessage>
+<p [ngStyle]="{backgroundColor: 'red', 'color': 'white'}"> Looks like servers are offline</p>
+</ng-template>
